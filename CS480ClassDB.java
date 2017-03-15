@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -26,13 +27,14 @@ public class CS480ClassDB {
     public static void main(String[] args) throws ParseException {
         // TODO code application logic here
         ArrayList<Log> logOfDB = new ArrayList<>();
-        ArrayList<Log> logOfDDOS = new ArrayList<>();
+        ArrayList<Log> logOfDDOS = new ArrayList<>();        
 
         try {
             File file = new File("missionreportdec19.txt");
             Scanner inFile = new Scanner(file);
 
             String d1, d2, d3, d4, d5, d6, d7, d8;
+            int count = 0;
 
             while (inFile.hasNext()) {
                 // put everyrhing in an array
@@ -46,7 +48,7 @@ public class CS480ClassDB {
                 d8 = inFile.next();
                 // hold the entries
 
-                Log entry = new Log(d1, d2, d3, d4, d5, d6, d7, d8);
+                Log entry = new Log(d1, d2, d3, d4, d5, d6, d7, d8, count);
 
                 // use i to feed logOfDB.get()
                 int i = 0;
@@ -103,9 +105,9 @@ public class CS480ClassDB {
         //System.out.println(logOfDB.get(0).print());
         int p = 0;
         System.out.println("logOfDDOS");
-
+        Collections.sort(logOfDDOS);
         while (p < logOfDDOS.size()) {
-            System.out.println(logOfDDOS.get(p).print());
+            System.out.println(logOfDDOS.get(p).print() + " ddos=" + logOfDDOS.get(p).getDDOScounter());
             p++;
         }
         int q = 0;

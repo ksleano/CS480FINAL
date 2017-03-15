@@ -19,11 +19,10 @@ import java.util.logging.Logger;
  *
  * Log to hold entries
  */
-public class Log {
+public class Log implements Comparable <Log>{
     
     private String month;
     private String date;
-    private String subStr;
     private String src;
     private String dst;
     private String id;
@@ -35,24 +34,22 @@ public class Log {
     
     
     // counter 
-    private int ddosCounter = 0;
+    private int ddosCounter;
     private static int count = 0;
     private static int toStringIndexCounter = 0;
             
     public Log(String month, String date, String time, String src,
-               String dst, String id, String spt, String dpt){
+               String dst, String id, String spt, String dpt, int count){
         this.month = month;
         this.date = date;
-        //convert time to double
-//        subStr = time;
-//        subStr = subStr.substring(3);
-//        this.time = Double.parseDouble(subStr.replace(":","."));
         this.time = time;
         this.src = src;
         this.dst = dst;
         this.id = id;
         this.spt = spt;
         this.dpt = dpt;
+        this.ddosCounter = count;
+        
         
         //complete month date time format
         this.mdt = month + " " + date + " " + time;
@@ -61,7 +58,7 @@ public class Log {
     
     public String print() {
         return (month + " " + date + " " + time + " " + src + " " + dst 
-                + " " + id + " " + spt + " " + dpt + " ddosCount=" + ddosCounter);
+                + " " + id + " " + spt + " " + dpt );
     }
     
     // getters
@@ -71,6 +68,10 @@ public class Log {
    
     public String getTime(){
         return this.mdt;
+    }
+    
+    public int getDDOScounter(){
+        return this.ddosCounter;
     }
     
     public void updateDDOScounter(){
@@ -90,6 +91,20 @@ public class Log {
         //System.out.println(date1 +  " " + date2 +  " "  + difference);
         
         return difference;
+    }
+
+    @Override
+    public int compareTo(Log otherLog) {
+        if (otherLog == null){
+            throw new NullPointerException("Comparing " + this + "to null");
+        } else if (!this.getClass().equals(otherLog.getClass())){
+            throw new ClassCastException("Possible ClassLoader issue");
+        } else if (this.ddosCounter > otherLog.getDDOScounter()){
+            return -1;
+        } else if (this.ddosCounter < otherLog.getDDOScounter()){
+            return 1;
+        }
+        return 0;
     }
    
     
