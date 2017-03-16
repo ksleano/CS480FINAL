@@ -104,6 +104,9 @@ public class CS480ClassDB {
         // to get info pass the index to get
         //System.out.println(logOfDB.get(0).print());
         int p = 0;
+        
+        Window w = new Window();
+        
         System.out.println("logOfDDOS");
         Collections.sort(logOfDDOS);
         while (p < logOfDDOS.size()) {
