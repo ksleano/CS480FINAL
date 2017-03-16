@@ -404,7 +404,10 @@ public class Window extends javax.swing.JFrame {
 
                 // Decided to do them all one by one since I can't figure out how
                 // to do it as an array.
+                
+                // sort it before the send off. Sort based on ddos count 
                 Collections.sort(logOfDDOS);
+                
                 jLabel1.setText(logOfDDOS.get(0).getIpSRC().substring(4));
                 jLabel4.setText(logOfDDOS.get(1).getIpSRC().substring(4));
                 jLabel5.setText(logOfDDOS.get(2).getIpSRC().substring(4));
