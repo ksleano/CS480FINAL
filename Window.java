@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs480classprojectswingv2;
+package cs480.pkgclass.db;
 
 import java.io.*;
 import java.util.*;
@@ -341,7 +341,7 @@ public class Window extends javax.swing.JFrame {
                     d8 = inFile.next();
                     // hold the entries
 
-                    cs480classprojectswingv2.Log entry = new cs480classprojectswingv2.Log(d1, d2, d3, d4, d5, d6, d7, d8);
+                    Log entry = new Log(d1, d2, d3, d4, d5, d6, d7, d8, 0);
 
                     // use i to feed logOfDB.get()
                     int i = 0;
@@ -404,6 +404,7 @@ public class Window extends javax.swing.JFrame {
 
                 // Decided to do them all one by one since I can't figure out how
                 // to do it as an array.
+                Collections.sort(logOfDDOS);
                 jLabel1.setText(logOfDDOS.get(0).getIpSRC().substring(4));
                 jLabel4.setText(logOfDDOS.get(1).getIpSRC().substring(4));
                 jLabel5.setText(logOfDDOS.get(2).getIpSRC().substring(4));
@@ -415,16 +416,16 @@ public class Window extends javax.swing.JFrame {
                 jLabel11.setText(logOfDDOS.get(8).getIpSRC().substring(4));
                 jLabel12.setText(logOfDDOS.get(9).getIpSRC().substring(4));
                 
-                jLabel13.setText(logOfDDOS.get(0).getDDOS());
-                jLabel14.setText(logOfDDOS.get(1).getDDOS());
-                jLabel15.setText(logOfDDOS.get(2).getDDOS());
-                jLabel16.setText(logOfDDOS.get(3).getDDOS());
-                jLabel17.setText(logOfDDOS.get(4).getDDOS());
-                jLabel18.setText(logOfDDOS.get(5).getDDOS());
-                jLabel19.setText(logOfDDOS.get(6).getDDOS());
-                jLabel20.setText(logOfDDOS.get(7).getDDOS());
-                jLabel21.setText(logOfDDOS.get(8).getDDOS());
-                jLabel22.setText(logOfDDOS.get(9).getDDOS());
+                jLabel13.setText(Integer.toString(logOfDDOS.get(0).getDDOScounter()));
+                jLabel14.setText(Integer.toString(logOfDDOS.get(1).getDDOScounter()));
+                jLabel15.setText(Integer.toString(logOfDDOS.get(2).getDDOScounter()));
+                jLabel16.setText(Integer.toString(logOfDDOS.get(3).getDDOScounter()));
+                jLabel17.setText(Integer.toString(logOfDDOS.get(4).getDDOScounter()));
+                jLabel18.setText(Integer.toString(logOfDDOS.get(5).getDDOScounter()));
+                jLabel19.setText(Integer.toString(logOfDDOS.get(6).getDDOScounter()));
+                jLabel20.setText(Integer.toString(logOfDDOS.get(7).getDDOScounter()));
+                jLabel21.setText(Integer.toString(logOfDDOS.get(8).getDDOScounter()));
+                jLabel22.setText(Integer.toString(logOfDDOS.get(9).getDDOScounter()));
                 
 
 //                for (int p = 0; p < 10; p++) {
